@@ -6,6 +6,7 @@ let package = Package(
     name: "SwordRPC",
     platforms: [
         .macOS(.v11),
+        .iOS(.v14)
     ],
     products: [
         .library(
