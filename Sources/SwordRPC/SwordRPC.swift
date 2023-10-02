@@ -51,12 +51,10 @@ public class SwordRPC {
     }
 
     public func connect() {
-        let bundleID = Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String ?? ""
-        let tempDir = NSTemporaryDirectory().replacingOccurrences(of: "\(bundleID)/", with: "")
-
+        let tempDir = FileManager.default.temporaryDirectory.path
 
         for ipcPort in 0 ..< 10 {
-            let socketPath = tempDir + "discord-ipc-\(ipcPort)"
+            let socketPath = tempDir + "/discord-ipc-\(ipcPort)"
             let localClient = ConnectionClient(pipe: socketPath)
             do {
                 try localClient.connect()
