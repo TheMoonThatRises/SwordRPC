@@ -25,7 +25,7 @@ public extension SwordRPC {
 
     /// Sends a command to clear the current presence.
     internal func sendEmptyPresence() {
-        log.notice("Sending an empty presence.")
+//        log.notice("Sending an empty presence.")
 
         // We send SET_ACTIVITY with no activity payload to clear our presence.
         let command = Command(cmd: .setActivity, args: [
@@ -36,7 +36,7 @@ public extension SwordRPC {
 
     /// Sends a command to set the current activity.
     internal func sendPresence(_ presence: RichPresence) throws {
-        log.notice("Sending new presence now: \(String(describing: presence))")
+//        log.notice("Sending new presence now: \(String(describing: presence))")
 
         let command = Command(cmd: .setActivity, args: [
             "pid": .int(Int(pid)),
@@ -47,7 +47,7 @@ public extension SwordRPC {
     }
 
     internal func startPresenceUpdater() {
-        log.notice("Starting presence updater.")
+//        log.notice("Starting presence updater.")
 
         presenceUpdater = currentPresence.throttle(for: .seconds(3), scheduler: worker, latest: true).sink { presence in
             if let presence {
